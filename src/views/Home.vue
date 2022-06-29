@@ -2,12 +2,12 @@
   <div>
     <div v-if="posts.length" class="grid ">
       <div>
-        <PostsList :posts="posts"/>
+        <PostsList :posts="posts" />
       </div>
-      <TagsCloud :posts="posts"/>
+      <TagsCloud :posts="posts" />
     </div>
-    <Spinner v-else/>
-    <div v-if="error">{{error}}</div>
+    <Spinner v-else />
+    <div v-if="error">{{ error }}</div>
   </div>
 </template>
 
@@ -16,24 +16,24 @@ import PostsList from '@/components/PostsList.vue'
 import getPosts from '@/composables/getPosts'
 import Spinner from '@/components/Spinner'
 import TagsCloud from '@/components/TagsCloud'
-import getUser from "@/composables/getUser";
-import { useRouter } from "vue-router";
+import getUser from '@/composables/getUser'
+import { useRouter } from 'vue-router'
 import { watch } from '@vue/runtime-core'
 export default {
-  components:{PostsList, Spinner, TagsCloud},
+  components: { PostsList, Spinner, TagsCloud },
   setup() {
     const { user } = getUser()
     const router = useRouter()
-    watch(user, ()=> {
+    watch(user, () => {
       if (!user.value) {
-        router.push("/Welcome");
+        router.push('/Welcome')
       }
     })
 
-    const {posts, error, fetchPosts} = getPosts()
+    const { posts, error, fetchPosts } = getPosts()
     fetchPosts()
-    return {posts, error}
-  }
+    return { posts, error }
+  },
 }
 </script>
 

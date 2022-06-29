@@ -1,7 +1,7 @@
 <template>
-  <div v-if="error">{{error}}</div>
+  <div v-if="error">{{ error }}</div>
   <div v-if="posts.length">
-      <PostsList :posts="filteredTags"/>
+    <PostsList :posts="filteredTags" />
   </div>
 </template>
 
@@ -10,24 +10,22 @@ import PostsList from '@/components/PostsList'
 import getPosts from '@/composables/getPosts'
 import { computed, onMounted } from '@vue/runtime-core'
 export default {
-    props: ['id'],
-    components: {PostsList},
-    setup(props) {
-        const {posts, error, fetchPosts} = getPosts()
+  props: ['id'],
+  components: { PostsList },
+  setup(props) {
+    const { posts, error, fetchPosts } = getPosts()
 
-        onMounted(()=> {
-            fetchPosts()
-        })
+    onMounted(() => {
+      fetchPosts()
+    })
 
-        const filteredTags = computed(() => {
-            return posts.value.filter(post => post.tags.includes(props.id))
-        })
+    const filteredTags = computed(() => {
+      return posts.value.filter((post) => post.tags.includes(props.id))
+    })
 
-        return {posts, error, filteredTags}
-    }
+    return { posts, error, filteredTags }
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

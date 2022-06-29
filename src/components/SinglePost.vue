@@ -47,6 +47,8 @@ export default {
 }
 .post p {
   font-size: 18px;
+  padding: 15px;
+  text-align: start;
 }
 .post h3::before {
   content: '';
@@ -61,14 +63,14 @@ export default {
   transform: rotateZ(-1deg);
 }
 
-@media screen and (max-width: 425px) {
+@media  (max-width: 425px) {
   .post h3 {
-    font-size: 28px;
+    font-size: 26px;
   }
   .post p {
     margin: 10px 0;
     font-size: 20px;
-    max-width: 220px;
+    max-width: 310px;
     overflow: hidden;
   }
 }
